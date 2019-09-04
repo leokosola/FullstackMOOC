@@ -8,31 +8,40 @@ import ReactDOM from 'react-dom';
 
 const App = () => {
   const course = {
-    name: 'Half Stack -sovelluskehitys',
+    name: 'Half Stack application development',
     parts: [
       {
-        name: 'Reactin perusteet',
-        exercises: 10
+        name: 'Fundamentals of React',
+        exercises: 10,
+        id: 1
       },
       {
-        name: 'Tiedonvälitys propseilla',
-        exercises: 7
+        name: 'Using props to pass data',
+        exercises: 7,
+        id: 2
       },
       {
-        name: 'Komponenttien tila',
-        exercises: 14
+        name: 'State of a component',
+        exercises: 14,
+        id: 3
       }
     ]
   }
 
-  console.log(course.name)
-
   return (
     <div>
+      <Course course={course} />
+    </div>
+  )
+}
+
+const Course = ({ course }) => {
+  return (
+    <>
       <Header course={course.name}/>
       <Content parts={course.parts}/>
       <Total parts={course.parts}/>
-    </div>
+    </>
   )
 }
 
@@ -60,13 +69,14 @@ const Part = (props) => {
   )
 }
 
-const Total = (props) => {
+const Total = ({ parts }) => {
+  const total = parts.reduce((s, p) => s + p.exercises, 0)
+
   return (
     <>
-      <p>yhteensä {props.parts[0].exercises + props.parts[1].exercises + props.parts[2].exercises} </p>
+      <p><b>total of exercises {total}</b></p>
     </>
   )
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));
-

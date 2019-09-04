@@ -1,0 +1,24 @@
+{
+  "persons":[
+    { 
+      "name": "Leo Kosola", 
+      "number": "050-3263797",
+      "id": 1
+    },
+    { 
+      "name": "David Sylvian", 
+      "number": "040-5368271",
+      "id": 2
+    },
+    { 
+      "name": "Vanishing Twin", 
+      "number": "010-4422648",
+      "id": 3
+    },
+    { 
+      "name": "Arthur Verocai", 
+      "number": "050-5674555",
+      "id": 4
+    }
+  ]
+}

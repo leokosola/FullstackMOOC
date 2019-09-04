@@ -1,15 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Persons from './components/Persons'
 import Search from './components/Search'
 import NewPerson from './components/NewPerson';
+import axios from 'axios';
 
 const App = () => {
 
   // tilat
-  const [ persons, setPersons] = useState([
-    { name: 'Arto Hellas', number: '0503263797' },
-    { name: 'Leo', number: '040 325 6789' },
-  ]) 
+  const [ persons, setPersons] = useState([]) 
+
+  useEffect(() => {
+    console.log('effect')
+    axios
+      .get('http://localhost:3001/persons')
+      .then(response => {
+        console.log('promise fulfilled')
+        setPersons(response.data)
+      })
+  }, [])
+
   const [ newName, setNewName ] = useState('')
   const [ newNumber, setNewNumber] = useState('')
   const [ search, setSearch ] = useState('')
